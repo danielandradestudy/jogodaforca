@@ -2,7 +2,7 @@ import random  # 1. Importamos a biblioteca para gerar aleatoriedade
 
 def hangman(): # Removi o parâmetro 'word' para a função escolher sozinha
     # 2. Nossa lista de palavras possíveis
-    word_list = ["python", "algoritmo", "computador", "programacao", "desafio"]
+    word_list = ["python", "algoritmo", "computador", "programacao", "cat"]
     
     # 3. O random.choice escolhe um item aleatório da lista
     word = random.choice(word_list)
@@ -21,11 +21,11 @@ def hangman(): # Removi o parâmetro 'word' para a função escolher sozinha
     board = ["__"] * len(word)
     win = False
     
-    print("Bem-vindo ao jogo SALVE O BOGOIO!")
+    print("Bem-vindo ao jogo!")
     
     while wrong < len(stages) - 1:
         print("\n")
-        msg = "Guess a letter: "
+        msg = "Adivinhe uma letra: "
         char = input(msg).lower() # .lower() garante que 'A' ou 'a' funcionem
         
         if char in rletters:
@@ -42,14 +42,15 @@ def hangman(): # Removi o parâmetro 'word' para a função escolher sozinha
         print("\n".join(stages[0: e]))
         
         if "__" not in board:
-            print("Você salvou o bogoio! !")
+            print("Victory! !")
             print("A palavra era: " + word)
             win = True
             break
             
     if not win:
         print("\n".join(stages[0: wrong]))
-        print("You lose! It was {}.".format(word))
+        print("You lose! A palavra era {}.".format(word))
 
 # Agora basta chamar a função sem passar nada
+
 hangman()
